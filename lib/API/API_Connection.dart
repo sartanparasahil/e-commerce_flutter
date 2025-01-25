@@ -1,6 +1,6 @@
 class APIConnection{
 
-  static const String hostConnect = "http://192.168.1.30/e-com";
+  static const String hostConnect = "http://192.168.1.17/e-com";
   static const String hostConnectUser = "$hostConnect/user";
 
   //add Image Folder

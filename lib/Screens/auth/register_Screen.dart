@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:http/http.dart' as http;
+import 'package:shared_preferences/shared_preferences.dart';
 import '../../API/API_Connection.dart';
 import '../home_Screen.dart';
 import 'login_Screen.dart';
@@ -39,6 +40,13 @@ class _registerScreenState extends State<registerScreen> {
 
         if(responseBody["success"] == true){
           Fluttertoast.showToast(msg: "Singup successfully");
+
+          SharedPreferences sharedPref = await SharedPreferences.getInstance();
+          sharedPref.setBool("ISLOGIN", true);
+          sharedPref.setString("USERNAME", _nameController.text.toString());
+          sharedPref.setString("USER-EMAIL",_emailController.text.toString() );
+
+          Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const homeScreen(),));
         }else{
           Fluttertoast.showToast(msg: "Failed to add user");
         }
@@ -167,7 +175,7 @@ class _registerScreenState extends State<registerScreen> {
                           TextFormField(
                             controller: _passwordController,
                             cursorColor: Theme.of(context).disabledColor,
-                            style: const TextStyle(),
+                            style: TextStyle(color: Theme.of(context).highlightColor),
                             obscureText: isselect ? false:true,
                             decoration: InputDecoration(
                               suffixIcon: IconButton(
@@ -233,7 +241,6 @@ class _registerScreenState extends State<registerScreen> {
                                   onPressed: () {
                                     if (_formKey.currentState!.validate()) {
                                       adduser();
-                                      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const homeScreen(),));
                                     }
                                   },
                                   icon: const Icon(

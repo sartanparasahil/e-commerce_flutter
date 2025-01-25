@@ -23,10 +23,8 @@ class _SearchScreenState extends State<SearchScreen> {
       var response = await http.post(
         Uri.parse(APIConnection.fetchProductAPI),
       );
-
       if (response.statusCode == 200) {
         var responseBody = jsonDecode(response.body);
-
         if (responseBody["success"]) {
           List resBodyData = responseBody["data"];
           for (var item in resBodyData) {

@@ -118,7 +118,7 @@ class _dashboardScreenState extends State<dashboardScreen> {
                     ),
                   ),
                 ),
-                Positioned(
+                  Positioned(
                     left: 23,
                     top: 2,
                     child: Container(
@@ -138,10 +138,10 @@ class _dashboardScreenState extends State<dashboardScreen> {
                         ),
                       ),
                     )
-                ),
-              ],
+                  ),
+                ],
+              ),
             ),
-          ),
           GestureDetector(
             onTap: () {
               Navigator.push(context, MaterialPageRoute(builder: (context) => CartScreen(cartProducts: cartProducts,),));

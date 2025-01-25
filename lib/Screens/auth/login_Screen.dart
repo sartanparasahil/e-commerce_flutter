@@ -40,6 +40,7 @@ class _logInScreenState extends State<logInScreen> {
 
           if(resBodyData[0]["user_password"] == responseBody["userEnteredPasswors"]){
 
+            // Fluttertoast.showToast(msg: resBodyData[0]["user_email"]);
             Fluttertoast.showToast(msg: "Login Successfully");
 
             SharedPreferences sharedPref = await SharedPreferences.getInstance();
